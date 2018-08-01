@@ -150,6 +150,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * 转换成 Base64
+     * @param bitmap
+     * @return
+     */
     public String bitmapToBase64(Bitmap bitmap) {
 
         String result = null;
