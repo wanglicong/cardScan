@@ -436,6 +436,7 @@ public class CardIOActivity extends Activity implements View.OnClickListener {
                             String[] permissions = {Manifest.permission.CAMERA};
                             waitingForPermission = true;
                             requestPermissions(permissions, PERMISSION_REQUEST_ID);
+                            //finish();
                         } else {
                             checkCamera();
                             android23AndAboveHandleCamera();
@@ -691,9 +692,8 @@ public class CardIOActivity extends Activity implements View.OnClickListener {
         if (requestCode == PERMISSION_REQUEST_ID) {
             waitingForPermission = false;
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
+                showCameraScannerOverlay();
+                onResume();
             } else {
                 // show manual entry - handled in onResume()
                 manualEntryFallbackOrForced = true;
@@ -1105,6 +1105,7 @@ public class CardIOActivity extends Activity implements View.OnClickListener {
      * @param bitmap
      */
     public void setIntent(Bitmap bitmap) {
+        Log.e("====","bitmap==="+bitmap);
         if (null != bitmap) {
             setResultAndFinish(RESULT_SCAN_SUPPRESSED, new Intent().putExtra(CardIOActivity.EXTRA_CAPTURED_CARD_IMAGE, bitmapToArray(bitmap, quality)));
         } else {
