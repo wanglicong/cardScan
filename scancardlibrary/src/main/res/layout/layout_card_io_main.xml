@@ -61,8 +61,8 @@
     </LinearLayout>
 
     <include
-        android:id="@+id/include_crop"
-        layout="@layout/bd_ocr_crop"
+        android:id="@+id/card_include_crop"
+        layout="@layout/card_bd_ocr_crop"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"/>

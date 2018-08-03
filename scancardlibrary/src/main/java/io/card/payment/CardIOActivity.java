@@ -1066,7 +1066,7 @@ public class CardIOActivity extends Activity implements View.OnClickListener {
         //添加相机
         mMainLayout.addView(previewFrame, previewParams);
 
-        include_crop = layout_card_io_main.findViewById(R.id.include_crop);
+        include_crop = layout_card_io_main.findViewById(R.id.card_include_crop);
         cropView = include_crop.findViewById(R.id.crop_view);
         cropMaskView = include_crop.findViewById(R.id.crop_mask_view);
         overlayView = include_crop.findViewById(R.id.overlay_view);
