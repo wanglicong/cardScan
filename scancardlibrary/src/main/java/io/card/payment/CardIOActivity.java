@@ -500,7 +500,7 @@ public class CardIOActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    private void showCameraScannerOverlay() {
+    public void showCameraScannerOverlay() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             View decorView = getWindow().getDecorView();
             // Hide the status bar.
@@ -1105,7 +1105,7 @@ public class CardIOActivity extends Activity implements View.OnClickListener {
      * @param bitmap
      */
     public void setIntent(Bitmap bitmap) {
-        Log.e("====","bitmap==="+bitmap);
+        Log.e("====", "bitmap===" + bitmap);
         if (null != bitmap) {
             setResultAndFinish(RESULT_SCAN_SUPPRESSED, new Intent().putExtra(CardIOActivity.EXTRA_CAPTURED_CARD_IMAGE, bitmapToArray(bitmap, quality)));
         } else {
@@ -1121,9 +1121,16 @@ public class CardIOActivity extends Activity implements View.OnClickListener {
      * @return
      */
     public byte[] bitmapToArray(Bitmap bitmap, int qualityM) {
+        try {
         ByteArrayOutputStream scaledCardBytes = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, qualityM, scaledCardBytes);
-        return scaledCardBytes.toByteArray();
+        byte[] bytes = scaledCardBytes.toByteArray();
+            scaledCardBytes.close();
+        return bytes;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return new byte[0];
     }
 
     /**

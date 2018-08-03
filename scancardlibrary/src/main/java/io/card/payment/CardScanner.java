@@ -41,7 +41,7 @@ import java.util.List;
  * <p/>
  * HOWEVER, at the moment, the CardScanner is directly communicating with the Preview.
  */
-class CardScanner implements Camera.PreviewCallback, Camera.AutoFocusCallback, SurfaceHolder.Callback {
+public class CardScanner implements Camera.PreviewCallback, Camera.AutoFocusCallback, SurfaceHolder.Callback {
 
     private static final String TAG = CardScanner.class.getSimpleName();
 
